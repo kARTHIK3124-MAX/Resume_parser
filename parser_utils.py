@@ -1,3 +1,5 @@
+import spacy
+nlp = spacy.load("en_core_web_sm")
 import re
 import docx2txt
 from pdfminer.high_level import extract_text
