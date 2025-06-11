@@ -6,7 +6,7 @@ import pandas as pd
 from parser_utils import parse_resume, match_score
 
 st.set_page_config(page_title="Smart Resume Matcher", layout="wide")
-st.title("🎯 Smart Resume Matcher + JD Filter")
+st.title("Smart Applicant Screener And Role Fit Analyzer")
 
 st.markdown("""
 Upload multiple resumes (**PDF/DOCX**) and paste a **Job Description** or keywords 
