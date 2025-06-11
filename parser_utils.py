@@ -1,12 +1,17 @@
 import spacy
-nlp = spacy.load("en_core_web_sm")
 import re
 import docx2txt
 from pdfminer.high_level import extract_text
-import spacy
 import tempfile
 
-nlp = spacy.load("en_core_web_sm")
+# ✅ Lazy-load spaCy model
+def get_nlp():
+    try:
+        return spacy.load("en_core_web_sm")
+    except OSError:
+        import os
+        os.system("python -m spacy download en_core_web_sm")
+        return spacy.load("en_core_web_sm")
 
 # -----------------------------------------------
 def extract_text_from_file(file):
@@ -52,6 +57,7 @@ def extract_name(text):
     if heading_name:
         return heading_name
 
+    nlp = get_nlp()  # ✅ lazy-load it here
     doc = nlp(text[:1000])
     for ent in doc.ents:
         if ent.label_ == "PERSON":
