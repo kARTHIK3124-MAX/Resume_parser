@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 from parser_utils import parse_resume, match_score
+import os
+os.system("python -m spacy download en_core_web_sm")
 
 st.set_page_config(page_title="Smart Resume Matcher", layout="wide")
 st.title("🎯 Smart Resume Matcher + JD Filter")
